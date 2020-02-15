@@ -1,0 +1,186 @@
+<html lang="en">
+<head>
+    <meta   charset  ="UTF-8">
+    <meta   name     ="viewport" content="width=device-width, initial-scale=1.0">
+    <script src      ="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type     ="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link   rel      ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Calculators</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form-horizontal" method="POST" id="basicCalculator">
+            <h2 class="text-info font-weight-bolder">Basic Calculator</h2>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label class="control-label text-info"><h4>First Number:</h4></label>
+                    <input class="form-control" type="text" name="firstNumber" autocomplete="off">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label text-info"><h4>Second Number:</h4></label>
+                    <input class="form-control" type="text" name="secondNumber" autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <ul class="list-inline col-sm-9">
+                    <li class="list-inline-item text-info"><h4>Operations:</h4></li>
+                    <li class="list-inline-item"><input type="radio" name="operation" value="+" checked></li>
+                    <li class="list-inline-item"><h2>+</h2></li>
+                    <li class="list-inline-item"><input type="radio" name="operation" value="-"></li>
+                    <li class="list-inline-item"><h2>-</h2></li>
+                    <li class="list-inline-item"><input type="radio" name="operation" value="x"></li>
+                    <li class="list-inline-item"><h2>x</h2></li>
+                    <li class="list-inline-item"><input type="radio" name="operation" value="/"></li>
+                    <li class="list-inline-item"><h2>&#247</h2></li>
+                </ul>
+                <div class="col-sm-3">
+                    <input class="btn btn-block btn-info" type="submit" name="equals"    value="="> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1">
+                    <label class="control-label text-info"><h4>Output:</h4></label>
+                </div>
+                <div class="col-sm-11">
+                    <input class="form-control" type="text" id="result" readonly>
+                </div>            
+            </div>
+            <div class="" id="status">
+
+            </div>
+        </form>
+
+        <form method="POST" id="oneDisplayCalculator">
+            <h2 class="text-primary font-weight-bolder">One Display Calculator</h2>
+            <div class="" id="oneDisplayStatus">
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="text"   class="form-control text-right" name="input" id="mainDisplay" value="" readonly>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="1" value="1">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="2" value="2">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="3" value="3">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-warning" name="+" value="+">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="4" value="4">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="5" value="5">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="6" value="6">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-warning" name="-" value="-">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="7" value="7">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="8" value="8">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="9" value="9">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-warning" name="x" value="x">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-3">
+                    <input type="button" class="btn btn-block btn-danger" id="delete" name="clear" value="C">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-primary" name="0" value="0">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="btn btn-block btn-danger" id="deleteAll" name="clearAll" value="CE">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" class="keys btn btn-block btn-warning" name="/" value="/">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-sm-12">
+                    <input type="submit" class="btn btn-block btn-primary" id="pass" name="equals" value="=">
+                </div>
+            </div>        
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready(function(){
+
+        $('#basicCalculator').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                   type: "POST",
+                   url : 'php/computeBasic.php',
+                   data: $(this).serialize(),
+                success: function(response){
+                    var jsonData = JSON.parse(response);
+                    $('#result').attr("value", jsonData.Result);
+                    $('#status').html(jsonData.Status);
+                    $('#status').attr("class", jsonData.Alert);                    
+                }
+            });
+        });
+
+        $('.keys').click(function() {
+            var front         = $('#mainDisplay').val();
+            var back          = $(this).val();
+            var text          = front.concat(back); 
+            $("#mainDisplay")     .attr("value", text);
+            $('#oneDisplayStatus').html("");
+            $('#oneDisplayStatus').attr("class", "");  
+        });
+
+        $('#deleteAll').click(function() {
+            $("#mainDisplay")     .attr("value", "");
+            $('#oneDisplayStatus').html("");
+            $('#oneDisplayStatus').attr("class", "");
+        }); 
+
+        $('#delete').click(function() {
+           var input         = $('#mainDisplay').val();
+           var deleteLast    = input.slice(0, -1);
+           $("#mainDisplay")     .attr("value", deleteLast);
+           $('#oneDisplayStatus').html("");
+           $('#oneDisplayStatus').attr("class", "");
+        });
+
+        $('#oneDisplayCalculator').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type   : "POST",
+                url    : 'php/computeOneDisplay.php',
+                data   : $(this).serialize(),
+                success: function(response){
+                    var jsonData = JSON.parse(response);
+                    $('#mainDisplay')     .attr("value", jsonData.Result);
+                    $('#oneDisplayStatus').html(jsonData.Status);
+                    $('#oneDisplayStatus').attr("class", jsonData.Alert);
+                }
+            });
+        });
+        
+    });
+</script>
+</html>
